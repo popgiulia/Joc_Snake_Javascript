@@ -12,40 +12,29 @@ window.onload = function () {
     canvas = document.getElementById("canvas");
     ctx = canvas.getContext("2d");
     document.addEventListener("keydown", keyDownEvent);
+    
     gameControl = startGame(x);
 };
 
 function startGame(x) {
     document.getElementById("status").innerHTML = "Game started";
-    document.getElementById("scor").innerHTML = "";
+    document.getElementById("score").innerHTML = "";
     return setInterval(draw, 1000 / x);
 }
 
 function endGame(x) {
     clearInterval(gameControl);
     document.getElementById("status").innerHTML = "Game Over";
-    document.getElementById("scor").innerHTML = "Score: " + x;
+    document.getElementById("score").innerHTML = "Score: " + x;
 }
 
-function pauza() {
-    if (ok == 1) {
-        ok = 0;
-        clearInterval(gameControl);
-        document.getElementById("status").innerHTML = "Game Paused";
-    }
-    else {
-        ok = 1;
-        gameControl = startGame(x);
-
-    }
-}
-
-//gameworld
+// Game world
 var gridSize = 20;
 var tileSize = 20;
 var nextX = 0;
 var nextY = 0;
-//snake and apple
+
+// Snake and apple
 var snakeX = 10;
 var snakeY = 10;
 var defaultTailSize = 3;
@@ -56,16 +45,10 @@ snakeX += nextX;
 snakeY += nextY;
 var snakeTrail = [];
 
-
 function draw() {
-    //gameworld
-    var gridSize = 20;
-    var tileSize = 20;
-
     snakeX += nextX;
     snakeY += nextY;
 
-   
     if (snakeX < 0)
         snakeX = gridSize - 1;
     if (snakeX > (gridSize - 1))
@@ -80,19 +63,19 @@ function draw() {
         appleX = Math.floor(Math.random() * gridSize);
         appleY = Math.floor(Math.random() * gridSize);
     }
-   
+
     ctx.fillStyle = "cyan";
     ctx.strokestyle = CANVAS_BORDER_COLOUR;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.strokeRect(0, 0, canvas.width, canvas.height);
-    
+
     ctx.fillStyle = SNAKE_COLOUR;
     ctx.strokestyle = SNAKE_BORDER_COLOUR;
     for (var i = 0; i < snakeTrail.length; i++) {
         ctx.fillRect(snakeTrail[i].a * tileSize, snakeTrail[i].b * tileSize, tileSize, tileSize);
         ctx.strokeRect(snakeTrail[i].a * tileSize, snakeTrail[i].b * tileSize, tileSize, tileSize);
 
-        //snake bites it's tail?
+        // Snake bites its tail?
         if (snakeTrail[i].a == snakeX && snakeTrail[i].b == snakeY) {
             if (tailSize > 3) {
                 endGame(tailSize);
@@ -101,16 +84,17 @@ function draw() {
         }
     }
 
-    // paint apple
+    // Paint apple
     ctx.fillStyle = "crimson";
     ctx.fillRect(appleX * tileSize, appleY * tileSize, tileSize, tileSize);
 
-    //set snake trail
+    // Set snake trail
     snakeTrail.push({ a: snakeX, b: snakeY });
     while (snakeTrail.length > tailSize) {
         snakeTrail.shift();
     }
 }
+
 function keyDownEvent(a) {
     switch (a.keyCode) {
         case 37:
@@ -129,6 +113,5 @@ function keyDownEvent(a) {
             nextX = 0;
             nextY = 1;
             break;
-
     }
 }

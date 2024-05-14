@@ -1,9 +1,8 @@
-.perimetru_joc {
+.game_area {
    text-align: center;
 }
 
-.informatii_joc {
-
+.game_info {
    text-align: center;
    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
    line-height: 24px;
@@ -14,22 +13,17 @@
    background-color: rgba(200, 111, 228, 0.459);
 }
 
-.buton_pauza {
-   background-color: mistyrose;
-   border-width: 6px;
-   border-color: rgb(47, 0, 255);
-   border-radius: 10px;
-   box-shadow: slateblue;
-   font-family: Georgia, 'Times New Roman', Times, serif;
-   color: rgb(28, 3, 138);
-}
 
-.scor {
+.score {
    font-size: large;
    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
    color: rgb(38, 0, 209);
 }
 
-.titlu {
-   color: rgb(38, 0, 209)
+.status {
+   font-size: medium;
+}
+
+.title {
+   color: rgb(38, 0, 209);
 }
