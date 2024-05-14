@@ -65,7 +65,7 @@ function draw() {
     snakeX += nextX;
     snakeY += nextY;
 
-    // daca sarpele a iesit din ecran sa imi apara in cealata parte
+   
     if (snakeX < 0)
         snakeX = gridSize - 1;
     if (snakeX > (gridSize - 1))
@@ -80,12 +80,12 @@ function draw() {
         appleX = Math.floor(Math.random() * gridSize);
         appleY = Math.floor(Math.random() * gridSize);
     }
-    //construim si coloram: sarpele,marul,spatiul de joc
+   
     ctx.fillStyle = "cyan";
     ctx.strokestyle = CANVAS_BORDER_COLOUR;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.strokeRect(0, 0, canvas.width, canvas.height);
-    //paint snake
+    
     ctx.fillStyle = SNAKE_COLOUR;
     ctx.strokestyle = SNAKE_BORDER_COLOUR;
     for (var i = 0; i < snakeTrail.length; i++) {
